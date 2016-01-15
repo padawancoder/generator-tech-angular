@@ -22,7 +22,7 @@ module.exports = generators.Base.extend({
     },
     prompting: function(){
         this.log(yosay('Welcome to ' + 
-            chalk.yellow('YANG (Yet Another Angular)') + ' generator!'));
+            chalk.yellow('tech-angular') + ' generator!'));
             
             var done = this.async();
             this.prompt([{
