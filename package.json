@@ -1,0 +1,21 @@
+{
+  "name": "generator-yang",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Mitch Cooper",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^1.1.1",
+    "generator-common": "^0.2.0",
+    "lodash": "^4.0.0",
+    "yeoman-generator": "^0.22.3",
+    "yosay": "^1.1.0"
+  },
+  "devDependencies": {
+    "mocha": "^2.3.4"
+  }
+}
