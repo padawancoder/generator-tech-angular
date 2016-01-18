@@ -6,16 +6,7 @@ var generators = require('yeoman-generator'),
 
 module.exports = generators.Base.extend({
     constructor: function(){
-        generators.Base.apply(this, arguments);
-        
-        this.argument('appname', { type: String, required: true });
-        this.appname = _.kebabCase(this.appname);
-        
-        this.option('includeutils', {
-           desc: 'Optionally includes Angular-UI Utils library.',
-           type: Boolean,
-           default: false 
-        });
+        generators.Base.apply(this, arguments);        
     },
     
     initializing: function(){
@@ -25,7 +16,14 @@ module.exports = generators.Base.extend({
             chalk.yellow('tech-angular') + ' generator!'));
             
             var done = this.async();
-            this.prompt([{
+            this.prompt([
+            {
+                type: 'input',
+                name: 'projectName',
+                message: 'Name of your project',
+                default: this.config.get('projectName') || 'WebApplication'   
+            },
+            {
                 type: 'input',
                 name: 'ngappname',
                 message: 'Angular App Name (ng-app)',
@@ -99,7 +97,7 @@ module.exports = generators.Base.extend({
 
         bower: function(){
             var bowerJson = {
-                name: this.appname,
+                name: this.config.get('projectName'),
                 license: 'MIT',
                 dependencies: {}  
             };
@@ -113,7 +111,6 @@ module.exports = generators.Base.extend({
             if (this.includeMoment){
                 bowerJson.dependencies['moment'] = '~2.10.6';                
             }
-            //if (this.options.includeutils){
             if (this.includeAngularUIUtils){
                 bowerJson.dependencies['angular-ui-utils'] = '~3.0.0';
             }

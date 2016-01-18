@@ -4,10 +4,17 @@ var plugins = require('gulp-load-plugins')();
 var config = require('./gulp.config')();
 var wiredep = require('wiredep');
 var livereload = require('gulp-livereload');
+var webpack = require('gulp-webpack');
 
 var paths = {
     appScripts: 'src/app/**/*.js'
 };
+
+gulp.task('default', function(){
+   return gulp.src('src/entry.js')
+        .pipe(webpack())
+        .pipe(gulp.dest('dist/')); 
+});
 
 gulp.task('scripts', function () {
     return gulp.src([paths.appScripts])
